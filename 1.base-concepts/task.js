@@ -48,7 +48,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   else {
     let constructorDate = new Date();
     let loanBody = a - c; //Тело кредита.
-    //let tern = date.getMonth() - constructorDate.getMonth + (12 * (date.getFullYear() - constructorDate.getFullYear()));//Срок на который был выдан кредит(месяцах).
+    let tern = date.getMonth() - constructorDate.getMonth + (12 * (date.getFullYear() - constructorDate.getFullYear()));//Срок на который был выдан кредит(месяцах).
     //Метод getMonth преобразует примитивное значение объекта дата в номер месяца по местному времени и возвращает его.
     //Метод getFullYear преобразует примитивное значение объекта дата в полный (четырехзначный) номер года по местному времени и возвращает его.
     let payment = loanBody * (p + (p / (((1 + p) ** tern) - 1))); //Ежемесячная оплата.
