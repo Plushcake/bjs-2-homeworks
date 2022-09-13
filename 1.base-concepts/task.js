@@ -39,13 +39,13 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
 
   if (interestRate < 0) {
-    return "Параметр процентная ставка содержит неправильное значение ${percent}";
+    return `Параметр "Процентная ставка" содержит неправильное значение  ${percent}`;
   }
   else if (downPayment < 0) {
-    return "Параметр начальный взнос содержит неправильное значение ${contribution}";
+    return `Параметр начальный взнос содержит неправильное значение ${contribution}`;
   }
   else if (loanАmount < 0) {
-    return "Параметр общая стоимость содержит неправильное значение ${amount}";
+    return `Параметр общая стоимость содержит неправильное значение ${amount}`;
   }
   else {
     const timeOfConclusion = new Date();
