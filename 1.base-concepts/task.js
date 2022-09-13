@@ -4,8 +4,8 @@
 "use strict"
 // Задача №1
 function solveEquation(a, b, c) {
-  let arr = [];
-  let discriminant = Math.pow(b, 2) - 4 * a * c; // Рассчитываем дискриминант
+  const arr = [];
+  const discriminant = Math.pow(b, 2) - 4 * a * c; // Рассчитываем дискриминант
 
   if (discriminant > 0) {   //Дискриминант больше нуля
     let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
@@ -16,8 +16,8 @@ function solveEquation(a, b, c) {
     let x1 = -b / (2 * a);
     arr.push(x1);
   }
-  else if (discriminant < 0) {   //Дискриминант меньше нуля
-  }
+  //else if (discriminant < 0) {   //Дискриминант меньше нуля
+  //}
   return arr;
 }
 
@@ -31,30 +31,34 @@ function solveEquation(a, b, c) {
 //Параметр <название параметра> содержит неправильное значение <значение параметра>
 //Округлите результат до двух значений после запятой.
 function calculateTotalMortgage(percent, contribution, amount, date) {
+  debugger;
   let totalAmount;
-  let p = parseInt(percent) / 100 / 12; //Процентная ставка.
-  let c = contribution; //Сумма первоначального взноса.
-  let a = amount; //Сумма кредита.
+  let interestRate = percent / 12 / 100; //Процентная ставка. или /100/12
+  let downPayment = contribution; //Сумма первоначального взноса.
+  let loanАmount = amount; //Сумма кредита.
 
-  if (p < 0) {
+
+  if (interestRate < 0) {
     return "Параметр процентная ставка содержит неправильное значение ${percent}";
   }
-  else if (c < 0) {
+  else if (downPayment < 0) {
     return "Параметр начальный взнос содержит неправильное значение ${contribution}";
   }
-  else if (a < 0) {
+  else if (loanАmount < 0) {
     return "Параметр общая стоимость содержит неправильное значение ${amount}";
   }
   else {
-    let constructorDate = new Date();
-    let loanBody = a - c; //Тело кредита.
-    let tern = date.getMonth() - constructorDate.getMonth + (12 * (date.getFullYear() - constructorDate.getFullYear()));//Срок на который был выдан кредит(месяцах).
-    //Метод getMonth преобразует примитивное значение объекта дата в номер месяца по местному времени и возвращает его.
-    //Метод getFullYear преобразует примитивное значение объекта дата в полный (четырехзначный) номер года по местному времени и возвращает его.
-    let payment = loanBody * (p + (p / (((1 + p) ** tern) - 1))); //Ежемесячная оплата.
-    let totalAmount = (payment * tern);//Общая сумма, которую придется заплатить клиенту.
+    let timeOfConclusion = new Date();
+    let tern = date.getMonth() - timeOfConclusion.getMonth() + (12 * (date.getFullYear() - timeOfConclusion.getFullYear()));//Срок на который был выдан кредит(месяцах).
+    //Метод getMonth Получить месяц, от 0 до 11.
+    //Метод getFullYear Получить год (4 цифры).
+    let loanBody = loanАmount - downPayment; //Тело кредита.
+    let payment = loanBody * (interestRate + (interestRate / (((1 + interestRate) ** tern) - 1))); //Ежемесячная оплата.
+    let totalSum = (payment * tern).toFixed(2);//Общая сумма, которую придется заплатить клиенту.
+    let totalAmount = Number(totalSum);
     console.log("Общая сумма " + totalAmount);
     return totalAmount;
   }
 }
+// =^.^=
 

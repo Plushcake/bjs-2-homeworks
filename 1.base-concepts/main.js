@@ -18,4 +18,4 @@ function calculateMortgage() {
     let span = window.mortageResult;
     span.textContent = result;
 }
-
+//Практика с кодом.
