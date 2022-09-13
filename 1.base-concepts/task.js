@@ -32,10 +32,10 @@ function solveEquation(a, b, c) {
 //Округлите результат до двух значений после запятой.
 function calculateTotalMortgage(percent, contribution, amount, date) {
   debugger;
-  let totalAmount;
-  let interestRate = percent / 12 / 100; //Процентная ставка. или /100/12
-  let downPayment = contribution; //Сумма первоначального взноса.
-  let loanАmount = amount; //Сумма кредита.
+  const totalAmount = 0;
+  const interestRate = percent / 12 / 100; //Процентная ставка. или /100/12
+  const downPayment = contribution; //Сумма первоначального взноса.
+  const loanАmount = amount; //Сумма кредита.
 
 
   if (interestRate < 0) {
@@ -48,14 +48,14 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     return "Параметр общая стоимость содержит неправильное значение ${amount}";
   }
   else {
-    let timeOfConclusion = new Date();
-    let tern = date.getMonth() - timeOfConclusion.getMonth() + (12 * (date.getFullYear() - timeOfConclusion.getFullYear()));//Срок на который был выдан кредит(месяцах).
+    const timeOfConclusion = new Date();
+    const tern = date.getMonth() - timeOfConclusion.getMonth() + (12 * (date.getFullYear() - timeOfConclusion.getFullYear()));//Срок на который был выдан кредит(месяцах).
     //Метод getMonth Получить месяц, от 0 до 11.
     //Метод getFullYear Получить год (4 цифры).
-    let loanBody = loanАmount - downPayment; //Тело кредита.
-    let payment = loanBody * (interestRate + (interestRate / (((1 + interestRate) ** tern) - 1))); //Ежемесячная оплата.
-    let totalSum = (payment * tern).toFixed(2);//Общая сумма, которую придется заплатить клиенту.
-    let totalAmount = Number(totalSum);
+    const loanBody = loanАmount - downPayment; //Тело кредита.
+    const payment = loanBody * (interestRate + (interestRate / (((1 + interestRate) ** tern) - 1))); //Ежемесячная оплата.
+    const totalSum = (payment * tern).toFixed(2);//Общая сумма, которую придется заплатить клиенту.
+    const totalAmount = Number(totalSum);
     console.log("Общая сумма " + totalAmount);
     return totalAmount;
   }
