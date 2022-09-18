@@ -26,17 +26,21 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) { //Насадка.
-  let sum = [];
-  for (i = 0; i < arr.length; i++) {
-  sum = sum + arr[i];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
   }
   return sum;
 }
 
 function makeWork(arrOfArr, func) {//Мясорубка. Принимает входные данные - массив массивов (мясо) и функцию worker. MakeWork функция высшего порядка.
-  let max = [];
-  for (i = 0; i < arrOfArr.length; i++) {
-    
+  debugger;
+  let max = 0;
+  for (let i = 0; i < arrOfArr.length; i++) {
+    const sum = func(arrOfArr[i]);
+    if (sum > max) {
+      max = sum;
+    }
   }
 
   return max;
