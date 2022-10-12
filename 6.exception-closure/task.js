@@ -2,7 +2,7 @@
 "use strict";
 function parseCount(number) {
     let parsed = Number.parseInt(number);
-    if (parsed === NaN) {
+    if (Number.isNaN(parsed)) {
         throw new Error("Невалидное значение");
     }
     return parsed;
@@ -10,19 +10,20 @@ function parseCount(number) {
 
 function validateCount(meaning) {
     try {
-        const parsedCo = parseCount(meaning);
-    } catch {
-        console.log("Ошибка");
+        return parseCount(meaning);
+    } catch (error) {
+        console.log(error);
+        console.log("Ошибка ");
+        return error;
     }
-    return parseCo;
 }
 
 //Задание 2.
 class Triangle {
-    constructor(sideA, sideB, sideC) {
-        this.a = sideA;
-        this.b = sideB;
-        this.c = sideC;
+    constructor(a, b, c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
 
         if ((a + b) < c || (b + c) < a || (a + c) < b) {
             throw new Error("Треугольник с такими сторонами не существует");
@@ -32,19 +33,22 @@ class Triangle {
         return this.a + this.b + this.c;
     }
     getArea() {
-        halfPerimeter = this.getPerimeter() / 2;
-        this.p = halfPerimeter;
-        triangleArea = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-        return triangleArea.toFixed(3);
+        let p = this.getPerimeter() / 2;
+        let triangleArea = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
+        return Number(triangleArea.toFixed(3));
     }
 }
 
-function getTriangle(sideA, sideB, sideC) {
+function getTriangle(a, b, c) {
     try {
-        return Triangle();
-    } catch {
-        return getArea();
-        console.log("Ошибка! Треугольник не существует");
+        let triangle = new Object();
+    } catch (error) {
+        return getArea() {
+            console.log("Ошибка! Треугольник не существует");
+        }
+        return getPerimeter() {
+            console.log("Ошибка! Треугольник не существует");
+        }
     }
 }
 
