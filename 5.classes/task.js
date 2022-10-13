@@ -1,5 +1,7 @@
+//"use strict";
 class PrintEditionItem {
-    constructor(name, releasDate, pagesCount) {
+    constructor(author, name, releasDate, pagesCount) {
+        this.author = author;
         this.name = name;
         this.releasDate = releasDate;
         this.pagesCount = pagesCount;
@@ -8,22 +10,22 @@ class PrintEditionItem {
     }
 
     fix() {
-        return this.state * 1.5;
+        this.state = state * 1.5;
     }
 
     set state(number) {
         if (number < 0) {
-            this.state = 0;
+            this._state = 0;
         }
         else if (number > 100) {
-            this.state = 100;
+            this._state = 100;
         }
         else {
             this.state = number;
         }
     }
     get state() {
-        return this.state;
+        return this._state;
     }
 }
 
@@ -89,20 +91,53 @@ console.log(picknick.state); //15
 //Задача №2.
 
 class Library {
-    constructor(name, books) {
+    constructor(name) {
         this.name = name;
         this.books = [];
     }
-}
 
-addBook(book) {
-    if (state > 30) {
-        this.books.push(book); //Под вопросом.
+
+    addBook(book) {
+        if (state > 30) {
+            this.books.push(book); //Под вопросом.
+        }
     }
-}
 
-findBookBy(type, value) {
+    findBookBy(type, value) {
+        this.books.findIndex(
+            (book) => book.type === value
+        );
+    }
 
-}
+    //giveBookByName(bookName) {
 
-giveBookByName(bookName)
+    //}
+
+
+    const library = new Library("Библиотека имени Ленина");
+
+library.addBook(
+    new DetectiveBook(
+    "Артур Конан Дойл",
+    "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+    2019,
+    1008
+)
+);
+library.addBook(
+    new FantasticBook(
+        "Аркадий и Борис Стругацкие",
+        "Пикник на обочине",
+        1972,
+        168
+    )
+);
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+
+console.log(library.findBookBy("name", "Властелин колец")); //null
+console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
+
+console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
+library.giveBookByName("Машина времени");
+console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
