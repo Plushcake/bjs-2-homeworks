@@ -1,16 +1,16 @@
 //"use strict";
 class PrintEditionItem {
-    constructor(author, name, releasDate, pagesCount) {
-        this.author = author;
+    constructor(name, releaseDate, pagesCount) {
         this.name = name;
-        this.releasDate = releasDate;
+        this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.state = 100;
         this.type = null;
     }
 
     fix() {
-        this.state = state * 1.5;
+        this.state = this.state * 1.5;
+        return this.state;
     }
 
     set state(number) {
@@ -21,7 +21,7 @@ class PrintEditionItem {
             this._state = 100;
         }
         else {
-            this.state = number;
+            this._state = number;
         }
     }
     get state() {
@@ -48,29 +48,30 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-    constructor(name, releasDate, pagesCount, author) {
-        super(name, releasDate, pagesCount, author);
+    constructor(author, name, releasDate, pagesCount) {
+        super(name, releasDate, pagesCount);
         this.type = "book";
+        this.author = author;
     }
 }
 
 class NovelBook extends Book {
-    constructor(name, releasDate, pagesCount, author) {
-        super(name, releasDate, pagesCount, author);
+    constructor(author, name, releasDate, pagesCount) {
+        super(author, name, releasDate, pagesCount);
         this.type = "novel";
     }
 }
 
 class FantasticBook extends Book {
-    constructor(name, releasDate, pagesCount, author) {
-        super(name, releasDate, pagesCount, author);
+    constructor(author, name, releasDate, pagesCount) {
+        super(author, name, releasDate, pagesCount);
         this.type = "fantastic";
     }
 }
 
 class DetectiveBook extends Book {
-    constructor(name, releasDate, pagesCount, author) {
-        super(name, releasDate, pagesCount, author);
+    constructor(author, name, releasDate, pagesCount) {
+        super(author, name, releasDate, pagesCount);
         this.type = "detective";
     }
 }
@@ -90,7 +91,7 @@ console.log(picknick.state); //15
 
 //Задача №2.
 
-class Library {
+/*class Library {
     constructor(name) {
         this.name = name;
         this.books = [];
@@ -137,7 +138,7 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 
 console.log(library.findBookBy("name", "Властелин колец")); //null
 console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
-
 console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
 library.giveBookByName("Машина времени");
 console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
+*/
