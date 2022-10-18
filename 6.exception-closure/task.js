@@ -41,14 +41,9 @@ class Triangle {
 
 function getTriangle(a, b, c) {
     try {
-        let triangle = new Object();
+        return getPerimeter(getTriangle);
     } catch (error) {
-        return getArea() {
-            console.log("Ошибка! Треугольник не существует");
-        }
-        return getPerimeter() {
-            console.log("Ошибка! Треугольник не существует");
-        }
+        console.log("Ошибка! Треугольник не существует");
     }
 }
 
